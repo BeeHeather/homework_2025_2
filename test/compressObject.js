@@ -28,4 +28,25 @@ QUnit.module("Тестируем функцию compressObject", function() {
 
         assert.deepEqual(result, {}, "Пустой объект должен вернуть пустой объект.");
     });
+
+    QUnit.test("Работает с агрументом, который не является объектом", function(assert) {
+        assert.deepEqual(compressObject('string'), {}, "Не-объект (строка) должен вернуть пустой объект.");
+        assert.deepEqual(compressObject(3), {}, "Не-объект (число) должен вернуть пустой объект.");
+    });
+
+    QUnit.test("Работает с объектом без нулевых значений", function(assert) {
+        const result = compressObject({
+            name: "Андрей",
+            age: 36,
+            country: "Россия"
+        });
+
+        assert.deepEqual(result, { name: "Андрей", age: 36, country: "Россия" }, "Должен вернуться исходный объект.");
+    });
+
+    QUnit.test("Работает с null", function(assert) {
+        const result = compressObject(null);
+
+        assert.deepEqual(result, {}, "null должен вернуть пустой объект.");
+    });
 });

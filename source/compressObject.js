@@ -1,0 +1,44 @@
+'use strict';
+
+/**
+ * Функция сжатия объекта
+ * @param {Object} - объект
+ * 
+ * @example
+ * // returns {a: "test"}
+ * compressObject({a: "test", b: undefined, c: null, d: ""})
+ * 
+ * @returns {Object} - объект, содержащий только ключи с ненулевыми значениями
+ */
+const compressObject = (obj) => {
+    const result = {};
+
+    if (!isObject(obj)) {
+      return result;
+    }
+
+    for (let key in obj) {
+        if (obj[key] !== null && obj[key] !== undefined && obj[key] !== "") {
+            result[key] = obj[key];
+        }
+    }
+
+    return result;
+}
+
+/**
+ * Функция проверки, является ли аргумент функции объектом
+ * @param {any} - значение
+ * 
+ * @example
+ * // returns false
+ * isObject('string')
+ * 
+ * @returns {boolean} - true если объект, false если не-объект
+ */
+
+const isObject = (param) => {
+  if (typeof(param) === 'object' && typeof(param) !== null) {
+    return true;
+  }
+}
