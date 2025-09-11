@@ -30,8 +30,8 @@ QUnit.module("Тестируем функцию compressObject", function() {
     });
 
     QUnit.test("Работает с агрументом, который не является объектом", function(assert) {
-        assert.deepEqual(compressObject('string'), {}, "Не-объект (строка) должен вернуть пустой объект.");
-        assert.deepEqual(compressObject(3), {}, "Не-объект (число) должен вернуть пустой объект.");
+        assert.throws(() => compressObject('string'), TypeError, "Не-объект (строка) должен вернуть ошибку.");
+        assert.throws(() => compressObject(3), TypeError, "Не-объект (число) должен вернуть ошибку.");
     });
 
     QUnit.test("Работает с объектом без нулевых значений", function(assert) {

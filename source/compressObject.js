@@ -41,4 +41,5 @@ const isObject = (param) => {
   if (typeof(param) === 'object' && typeof(param) !== null) {
     return true;
   }
+  throw new TypeError(`Аргумент не является объектом`);
 }
