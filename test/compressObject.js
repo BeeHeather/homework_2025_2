@@ -45,8 +45,6 @@ QUnit.module("Тестируем функцию compressObject", function() {
     });
 
     QUnit.test("Работает с null", function(assert) {
-        const result = compressObject(null);
-
-        assert.deepEqual(result, {}, "null должен вернуть пустой объект.");
+        assert.throws(() => compressObject(null), TypeError, "null должен вернуть ошибку.");
     });
 });

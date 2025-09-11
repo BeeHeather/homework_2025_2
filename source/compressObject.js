@@ -14,7 +14,7 @@ const compressObject = (obj) => {
     const result = {};
 
     if (!isObject(obj)) {
-      return result;
+      throw new TypeError(`Аргумент не является объектом`);
     }
 
     for (let key in obj) {
@@ -38,8 +38,5 @@ const compressObject = (obj) => {
  */
 
 const isObject = (param) => {
-  if (typeof(param) === 'object' && typeof(param) !== null) {
-    return true;
-  }
-  throw new TypeError(`Аргумент не является объектом`);
+    return typeof(param) === 'object' && param !== null;
 }
